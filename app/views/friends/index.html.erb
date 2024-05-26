@@ -1,0 +1,42 @@
+<h1>Friends</h1>
+<%= link_to 'New Friend', new_friend_path ,class:'btn btn-primary'%>
+<!-- <%= @friends %> -->
+<% if @friends.empty? %>
+  <div class="card mt-3">
+    <div class="card-body">
+      <h3>Hey Buddy , Let's make new Friend's 😎
+        !!</h3>
+    </div>
+  </div>
+<% else %>
+
+  <table  class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col"> First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Contact Number</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @friends.each do |friend| %>
+        <tr>
+          <td><%= friend.first_name %></td>
+          <td><%= friend.last_name %></td>
+          <td><%= friend.email %></td>
+          <td><%= friend.contact_number %></td>
+          <td><%= link_to 'Show', friend ,class:'btn btn-secondary'%></td>
+          <% if friend.user == Current.user %>
+            <td><%= link_to 'Edit', edit_friend_path(friend) ,class:'btn btn-secondary'%></td>
+            <td><%= button_to 'Delete', friend, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger ' %></td>
+          <% else %>
+          <td></td><td></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

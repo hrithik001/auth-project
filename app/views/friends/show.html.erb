@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-body">
+      <h1><%= @friend.first_name %> <%= @friend.last_name %></h1>
+      <p> <b >Email:</b> <%= @friend.email %></p>
+      <p> <b>Contact Number: </b> <%= @friend.contact_number %></p>
+      <%= link_to 'Back', friends_path ,class:'btn btn-secondary'%>
+      <% if @friend.user == Current.user %>
+        <%= link_to 'Edit', edit_friend_path(@friend) ,class:'btn btn-secondary'%> 
+        <%= button_to 'Delete', @friend, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger mt-2' %>
+      <% end %>
+  </div>
+</div>

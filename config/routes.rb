@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  root to: "main#index"
+  # root to: "main#index"
+  root 'friends#index'
+  resources :friends
   get "sign_up" ,to: "registrations#new"
   post "sign_up",to: "registrations#create"
   get "password", to: "passwords#edit", as: :edit_password

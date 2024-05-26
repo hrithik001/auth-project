@@ -5,16 +5,14 @@
 
 <%= form_with model: @user, url: sign_up_path do |f| %>
 
-  <% if @user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this freind from being saved:</h2>
-
-      <ul>
-        <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+  <% if f.object.errors.any? %>
+  <div class="alert alert-danger">
+    <% f.object.errors.full_messages.each do |message| %>
+      <div>
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
   <% end %>
 
 

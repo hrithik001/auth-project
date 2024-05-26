@@ -1,22 +1,17 @@
 <h1 class="mt-4">Edit profile</h1>
-
-
-
-
 <%= form_with model: Current.user, url: edit_password_path do |f| %>
 
 <% if f.object.errors.any? %>
-<div class="alert alert-danger">
-  <% f.object.errors.full_messages do |message| %>
-    <div>
-      <%= message %>
-    </div>
-  <% end %>
-</div>
+  <div class="alert alert-danger">
+    <% f.object.errors.full_messages.each do |message| %>
+      <div>
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
-
-
+  <br>
   <%= f.password_field :password ,placeholder:'Password' ,class:'mt-2 form-control'%>
   <br>
   <%= f.password_field :password_confirmation, placeholder:'Confrirm password',class:'mt-2 form-control' %>
