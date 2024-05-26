@@ -1,6 +1,7 @@
 class MainController < ApplicationController
     def index
-        flash[:notice] = "Successfully installed"
-        flash[:alert] = "Alerting the value"
+        if session[:user_id]
+            @user = User.find(session[:user_id])
+        end
     end
 end
