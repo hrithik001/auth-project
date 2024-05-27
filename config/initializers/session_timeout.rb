@@ -1,1 +1,1 @@
-SESSION_TIMEOUT = 5.minutes
+SESSION_TIMEOUT = 30.minutes
