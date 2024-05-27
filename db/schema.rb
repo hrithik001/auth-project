@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_26_155724) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_27_052853) do
   create_table "friends", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -22,6 +22,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_155724) do
     t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
+  create_table "permission_requests", force: :cascade do |t|
+    t.string "sender_name"
+    t.string "sender_email"
+    t.string "sender_contact_number"
+    t.string "reason_for_modification"
+    t.string "status"
+    t.integer "user_id", null: false
+    t.integer "friend_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_permission_requests_on_friend_id"
+    t.index ["user_id"], name: "index_permission_requests_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest"
@@ -30,4 +44,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_26_155724) do
   end
 
   add_foreign_key "friends", "users"
+  add_foreign_key "permission_requests", "friends"
+  add_foreign_key "permission_requests", "users"
 end

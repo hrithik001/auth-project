@@ -1,5 +1,9 @@
 <h1>Friends 😊</h1>
-<%= link_to 'New Friend', new_friend_path ,class:'btn btn-primary'%>
+<% if session[:user_id] != nil %>
+  <%= link_to 'New Friend', new_friend_path ,class:'btn btn-primary'%>
+<% else %>
+  <span><i>LogIn or SignUp to add friends</i></span>
+<% end %>
 <!-- <%= @friends %> -->
 <% if @friends.empty? %>
   <div class="card mt-3">

@@ -20,7 +20,7 @@ class FriendsController < ApplicationController
         if @friend.save
             redirect_to @friend, notice: 'woooh , New friend created'
         else
-            render :new
+            render :new, status: :unprocessable_entity
         end
     end
 

@@ -1,33 +1,37 @@
 <%= form_with(model: @friend, local: true) do |form| %>
-  <% if @friend.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@friend.errors.count, "error") %> prohibited this friend from being saved:</h2>
-
+  <!-- <% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+        <% form.object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+    </div>
+  <% end %> -->
+  <!-- <%= form.object.inspect %> -->
+  <% if form.object.errors.any? %>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading">The following errors occurred:</h4>
       <ul>
-        <% @friend.errors.full_messages.each do |message| %>
+        <% form.object.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
+
   <div class="field mb-3">
-    <!-- <%= form.label :first_name %> -->
     <%= form.text_field :first_name, class: "form-control" ,placeholder: 'First name' %>
   </div>
 
   <div class="field mb-3">
-    <!-- <%= form.label :last_name %> -->
     <%= form.text_field :last_name, class: "form-control" ,placeholder: 'Last name'%>
   </div>
 
   <div class="field mb-3">
-    <!-- <%= form.label :email %> -->
-    <%= form.email_field :email, class: "form-control" ,placeholder: 'example@gmail.com'%>
+    <%= form.text_field :email, class: "form-control" ,placeholder: 'example@gmail.com'%>
   </div>
 
   <div class="field mb-3">
-    <!-- <%= form.label :contact_number %> -->
     <%= form.text_field :contact_number, class: "form-control" ,placeholder: 'Contact number'%>
   </div>
 

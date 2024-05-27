@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sender_name: MyString
+  sender_email: MyString
+  sender_contact_number: MyString
+  reason_for_modification: MyString
+  status: MyString
+  user: one
+  friend: one
+
+two:
+  sender_name: MyString
+  sender_email: MyString
+  sender_contact_number: MyString
+  reason_for_modification: MyString
+  status: MyString
+  user: two
+  friend: two

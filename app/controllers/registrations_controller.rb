@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
             redirect_to root_path ,notice: "Successfully created User"
         else
             
-            render :new ,notice: "not able to "
+            render :new ,status: :unprocessable_entity
         end
     end
     
@@ -27,7 +27,7 @@ class RegistrationsController < ApplicationController
     #     end
     #   end
     
-      # DELETE /freinds/1 or /freinds/1.json
+      
     #   def destroy
     #     @freind.destroy!
     
@@ -38,12 +38,7 @@ class RegistrationsController < ApplicationController
     #   end
     
       private
-        # Use callbacks to share common setup or constraints between actions.
-        # def set_freind
-        #   @freind = Freind.find(params[:id])
-        # end
-    
-        # Only allow a list of trusted parameters through.
+        
         def user_params
           params.require(:user).permit(:email, :password, :password_confirmation)
         end
