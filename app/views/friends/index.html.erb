@@ -2,7 +2,7 @@
 <% if session[:user_id] != nil %>
   <%= link_to 'New Friend', new_friend_path ,class:'btn btn-primary'%>
 <% else %>
-  <span><i>LogIn or SignUp to add friends</i></span>
+  <span ><i> <%= link_to 'LogIn' ,sign_in_path ,style:'text-decoration:none'%> or <%= link_to 'SignUp' ,sign_up_path ,style:'text-decoration:none'%> to add friends</i></span>
 <% end %>
 <!-- <%= @friends %> -->
 <% if @friends.empty? %>
