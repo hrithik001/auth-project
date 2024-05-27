@@ -1,6 +1,6 @@
 
 class FriendsController < ApplicationController
-    before_action :require_login
+    before_action :check_session_timeout
     before_action :set_friend, only: [:show, :edit, :update, :destroy]
     before_action :authorize_user, only: [:edit, :update, :destroy]
 
@@ -18,7 +18,7 @@ class FriendsController < ApplicationController
     def create
         @friend = current_user.friends.build(friend_params)
         if @friend.save
-            redirect_to @friend, notice: 'Friend was successfully created.'
+            redirect_to @friend, notice: 'woooh , New friend created'
         else
             render :new
         end
@@ -29,7 +29,7 @@ class FriendsController < ApplicationController
 
     def update
         if @friend.update(friend_params)
-            redirect_to @friend, notice: 'Friend was successfully updated.'
+            redirect_to @friend, notice: 'Friend was updated successfully.'
         else
             render :edit
         end
@@ -51,11 +51,6 @@ class FriendsController < ApplicationController
         params.require(:friend).permit(:first_name, :last_name, :email, :contact_number)
     end
 
-    def require_login
-        unless current_user
-            redirect_to sign_in_path, alert: "You must be logged in to access this section"
-        end
-    end
 
     def authorize_user
         unless @friend.user == current_user
