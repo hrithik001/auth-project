@@ -1,5 +1,5 @@
 <h1>Friends 😊</h1>
-<% if session[:user_id] != nil %>
+<% if Current.user %>
   <%= link_to 'New Friend', new_friend_path ,class:'btn btn-primary'%>
 <% else %>
   <span ><i> <%= link_to 'LogIn' ,sign_in_path ,style:'text-decoration:none'%> or <%= link_to 'SignUp' ,sign_up_path ,style:'text-decoration:none'%> to add friends</i></span>
@@ -28,7 +28,7 @@
     <tbody>
       <% @friends.each do |friend| %>
         <tr class="text-center">
-          <td><%= friend.first_name %></td>
+          <td><%= friend.first_name  %></td>
           <td><%= friend.last_name %></td>
           <td><%= friend.email %></td>
           <td><%= friend.contact_number %></td>
